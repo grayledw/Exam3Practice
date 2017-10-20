@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  FOR and WHILE loops.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Derek Grayless.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -208,7 +208,7 @@ def practice_problem3(start, n, threshold):
       :type threshold: float
     """
     ####################################################################
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ####################################################################
@@ -217,6 +217,28 @@ def practice_problem3(start, n, threshold):
     #    TIME ESTIMATE:   < 15 minutes.
     ####################################################################
 
+    list_first_n_numbers = []
+    list_threshhold_bigger_sqrt_2 = []
+
+    index = start
+
+    while True:
+        if n != 0:
+            if threshold > math.sqrt(2):
+                for k in range(start, start + n - 1):
+                    list_threshhold_bigger_sqrt_2 += [start + k]
+            else:
+                if math.sin(index) + math.cos(index) > threshold:
+                    list_first_n_numbers += [index]
+                    index += 1
+                    if len(list_first_n_numbers) == n:
+                        break
+                else:
+                    index += 1
+        else:
+            return []
+
+    return list_first_n_numbers
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.

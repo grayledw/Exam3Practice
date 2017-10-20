@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Derek Grayless.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -134,13 +134,22 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
+
+    same_character_list = []
+
+    for k in range(len(sequence) - 1):
+        if sequence[k] == sequence[k + 1]:
+            same_character_list += [k]
+
+    return same_character_list
+
 
 
 def run_test_practice_problem4b():
@@ -197,7 +206,7 @@ def practice_problem4b(sequence):
       :type sequence: (list | tuple) of (float | int)
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -205,6 +214,15 @@ def practice_problem4b(sequence):
     #    TIME ESTIMATE:   10 minutes.
     ####################################################################
 
+
+    largest_num = sequence[0]
+
+    for k in range(2, len(sequence), 2):
+        if sequence[k] > largest_num:
+            largest_num = sequence[k]
+
+
+    return largest_num
 
 def run_test_practice_problem4c():
     """ Tests the    practice_problem4c    function. """
