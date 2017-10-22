@@ -181,6 +181,20 @@ def run_test_big_letters():
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
+    # Test 2:
+    expected = 'LNDADERKENKRNBRANBEN'
+    answer = big_letters([(3, 1, 4),  # not a string
+                          'LiNDA',  #
+                          ['EAST DAVIS AVE', 1 , 'B'],  # not a string
+                          'DEReK',  # OS
+                          'EthaN',  # C
+                          'KaRoN'  # OP
+                          'BRiAN',  # D
+                          'BrENt'  # OO
+                          ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+
 
 def big_letters(sequence_of_sequences):
     """
@@ -211,7 +225,7 @@ def big_letters(sequence_of_sequences):
     Precondition:  the given argument is a sequence of sequences.
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -233,6 +247,26 @@ def big_letters(sequence_of_sequences):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  12 minutes.
     # ------------------------------------------------------------------
+
+    # "".isupper()
+
+    string_upper_in_order = ''
+
+    for j in range(len(sequence_of_sequences)):
+
+        substring = sequence_of_sequences[j]
+
+        for index in range(len(substring)):
+            if type(substring) is str:
+                for k in range(len(substring[index])):
+                    if substring[index][k].isupper():
+                        # string_upper_in_order.append(substring[index][k])
+                        string_upper_in_order += substring[index][k]
+
+    return string_upper_in_order
+
+
+
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
