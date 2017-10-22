@@ -422,13 +422,22 @@ def practice_problem4d(sequence):
       :rtype: int
     """
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
+
+    sum_of_primes = 0
+
+    for number in range(len(sequence) - 1):
+        if is_prime(sequence[number]) and is_prime(sequence[number + 1]) == True:
+            if sequence[number] != sequence[number + 1]:
+                sum_of_primes += sequence[number]
+
+    return sum_of_primes
 
 
 # ----------------------------------------------------------------------
