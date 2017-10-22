@@ -6,7 +6,7 @@ This problem provides practice at:
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -75,7 +75,7 @@ def shape(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     ####################################################################
@@ -87,6 +87,27 @@ def shape(r):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  15 minutes.
     # ------------------------------------------------------------------
+
+    for j in range(r):
+
+        for s in range(j):
+            print(' ', end='')
+
+        for k in range(r - j):
+            print('+', end='')
+
+        print('!', end='')
+
+
+        for n in range(r - j):
+            print(r - n, end='')
+
+        for h in range(j):
+            print('-', end='')
+
+
+        print()
+
 
 
 # ----------------------------------------------------------------------
