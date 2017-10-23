@@ -135,6 +135,18 @@ def run_test_practice_problem3():
     #             that they are adequate tests!
     ####################################################################
 
+    # Test 2
+    expected = [0, 1]
+    actual = practice_problem3(0, 2, 0.5)
+    print('Expected:', expected)
+    print('Actual:', actual)
+
+    # Test 3
+    expected = [3, 4, 5, 6, 7]
+    actual = practice_problem3(3, 5, 0.3)
+    print('Expected:', expected)
+    print('Actual:', actual)
+
 
 def practice_problem3(start, n, threshold):
     """

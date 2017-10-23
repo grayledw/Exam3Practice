@@ -29,6 +29,7 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
@@ -89,7 +90,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -101,6 +102,61 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # ------------------------------------------------------------------
+
+    # original_circle = rg.Circle(point, radius)
+    # original_circle.fill_color = color
+
+    # original_x = point.x
+    # original_y = point.y
+    #
+    # x = original_x
+    # y = original_y
+    #
+    # for k in range(n):
+    #
+    #     for j in range(k + 1):
+    #         circle = rg.Circle(rg.Point(x, y), radius)
+    #         circle.fill_color = color
+    #         circle.attach_to(window)
+    #         x = x + (radius * 2)
+    #
+    #     x = original_x
+    #
+    #     x = x - (radius * (k + 1))
+    #
+    #     y = y - (radius*math.sqrt(3))
+    #
+    # window.render()
+    y_movement(point, radius, color, window, n, 1)
+    y_movement(point, radius, color, window, n, -1)
+
+
+def y_movement(point, radius, color, window , n, direction_y_move):
+    original_x = point.x
+    original_y = point.y
+
+    x = original_x
+    y = original_y
+
+    for k in range(n):
+
+        for j in range(k + 1):
+            circle = rg.Circle(rg.Point(x, y), radius)
+            circle.fill_color = color
+            line = rg.Line(rg.Point(x - radius, y), rg.Point(x + radius, y))
+            circle.attach_to(window)
+            line.attach_to(window)
+            x = x + (radius * 2)
+
+        x = original_x
+
+        x = x - (radius * (k + 1))
+
+
+        y = y - ((radius * math.sqrt(3)) * direction_y_move)
+
+        window.render()
+
 
 
 def run_test_many_hourglasses():
@@ -179,6 +235,29 @@ def many_hourglasses(window, square, m, colors):
     #                         a correct "hourglass" function above)
     #    TIME ESTIMATE:  20 minutes (warning: this problem is challenging)
     # ------------------------------------------------------------------
+
+    square.attach_to(window)
+
+    for j in range(m):
+        # radius = (j * (square.length_of_each_side / ((j + 1) * 2)))
+        radius = square.length_of_each_side /  2
+        # corner_1 = rg.Point(square.center.x - (square.length_of_each_side / 2) + radius, square.center.y - (square.length_of_each_side / 2) + radius)
+        # corner_2 = rg.Point(square.center.x + (square.length_of_each_side / 2) + (radius * math.sqrt(3)), square.center.y + (square.length_of_each_side / 2) + (radius * math.sqrt(3)))
+        # displacement = ((j - 1) * (square.length_of_each_side / ((j + 1) * 2)))
+        # if j == 0:
+        #     displacement = 0
+        # corner_1.x += displacement
+        # corner_2.x += displacement
+        square_corner_1 = rg.Point(square.center.x - square.length_of_each_side / 2, square.center.y - square.length_of_each_side / 2)
+        square_corner_2 = rg.Point(square.center.x + square.length_of_each_side / 2, square.center.y + square.length_of_each_side / 2)
+        corner_1 = rg.Point(square_corner_1.x + (2 * radius * (j + 1)), square_corner_1.y - (radius * j * math.sqrt(3)))
+        corner_2 = rg.Point(square_corner_2.x + (2 * radius * (j + 1)) + (j * radius * 2), square_corner_2.y + (radius * j * math.sqrt(3)))
+        rectangle = rg.Rectangle(rg.Point(corner_1.x, corner_1.y), rg.Point(corner_2.x, corner_2.y))
+        hourglass(window, j + 1, rg.Point(corner_1.x + rectangle.get_width() / 2, corner_1.y + rectangle.get_height() / 2), radius, colors[j % len(colors)])
+        rectangle.attach_to(window)
+
+    window.render()
+
 
 
 # ----------------------------------------------------------------------
