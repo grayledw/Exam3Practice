@@ -253,11 +253,16 @@ def many_hourglasses(window, square, m, colors):
         corner_1 = rg.Point(square_corner_1.x + (2 * radius * (j + 1)), square_corner_1.y - (radius * j * math.sqrt(3)))
         corner_2 = rg.Point(square_corner_2.x + (2 * radius * (j + 1)) + (j * radius * 2), square_corner_2.y + (radius * j * math.sqrt(3)))
         rectangle = rg.Rectangle(rg.Point(corner_1.x, corner_1.y), rg.Point(corner_2.x, corner_2.y))
-        hourglass(window, j + 1, rg.Point(corner_1.x + rectangle.get_width() / 2, corner_1.y + rectangle.get_height() / 2), radius, colors[j % len(colors)])
+        # hourglass(window, j + 1, rg.Point(corner_1.x + rectangle.get_width() / 2, corner_1.y + rectangle.get_height() / 2), radius, colors[j % len(colors)])
         rectangle.attach_to(window)
 
     window.render()
 
+# height (n-1) * 2
+# work with center points instead of corners
+# think in terms of height, width, center
+# in dealing with height you have to account for sqrt 3 as well
+# crazy logic for rectangles somewhere
 
 
 # ----------------------------------------------------------------------
